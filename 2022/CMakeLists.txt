@@ -1,0 +1,7 @@
+add_executable(day01_main day01/main.cpp)
+add_executable(day02_main day02/main.cpp)
+add_executable(day03_main day03/main.cpp)
+add_executable(day04_main day04/main.cpp)
+add_executable(day05_main day05/main.cpp)
+add_executable(day06_main day06/main.cpp)
+add_executable(day07_main day07/main.cpp)
