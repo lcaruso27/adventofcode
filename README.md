@@ -1,6 +1,6 @@
 # adventofcode
 
-Collection of my participation to [advent of code] puzzles with C++ langage.
+Collection of my participation to [advent of code] puzzles with C++ language.
 
 ---
 
