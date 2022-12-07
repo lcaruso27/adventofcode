@@ -31,7 +31,7 @@ Run day XX
 
 2. Run (as expected) `add-new-day.sh` bash script:
 ```
-./add-new-day.sh <yyyy> <dd> <description>
+./add_new_day.sh <yyyy> <dd> <description>
 ```
 
 [advent of code]: <https://adventofcode.com/> "advent of code"
