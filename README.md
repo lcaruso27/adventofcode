@@ -22,14 +22,14 @@ cd build && make
 
 Run day XX
 ```
-./2022/day<dd>_main <input_file>
+./<yyyy>/day<dd>_main <input_file>
 ```
 
 ## Add new day
 
-1. Get cookie session from [advent of code] (need registration) & copy-paste it to `<YYYY>/.cookie` file
+1. Get cookie session from [advent of code] (need registration) & copy-paste it to `<yyyy>/.cookie` file
 
-2. Run (as expected) `add-new-day.sh` bash script:
+2. Run (as expected) `add_new_day.sh` bash script:
 ```
 ./add_new_day.sh <yyyy> <dd> <description>
 ```

@@ -21,7 +21,7 @@ int help()
 // Comment
 
 int main_puzzle1(int argc, char** argv)
-{   
+{
     std::ifstream file(argv[1]);
     return 0;
 }
@@ -43,7 +43,7 @@ int main(int argc, char** argv)
     }
 
     int retcode;
-    
+
     try
     {
         std::cout << HEADER_DELIM << " 1st puzzle " << HEADER_DELIM << std::endl;
@@ -62,6 +62,6 @@ int main(int argc, char** argv)
         std::cerr << "Unknown exception caught: " << std::endl;
         return 3;
     }
-    
+
     return retcode;
 }

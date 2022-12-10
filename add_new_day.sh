@@ -31,7 +31,7 @@ COOKIE="${TOOLDIR}/${YEAR}/.cookie"
 sed "s,#YYYY,$YEAR,;s,#XX,$DAYNUM,;s,#Subject,${DESC}," "${TOOLDIR}/main.cpp.in" > "${TOOLDIR}/${YEAR}/day$DAYNUM/main.cpp"
 
 echo -n "" > "${TOOLDIR}/${YEAR}/day$DAYNUM/example.txt" 
-curl -b session=$(cat $COOKIE) "https://adventofcode.com/${YEAR}/day/${DDAY}/input" > "${TOOLDIR}/day$DAYNUM/input.txt"
+curl -b session=$(cat $COOKIE) "https://adventofcode.com/${YEAR}/day/${DDAY}/input" > "${TOOLDIR}/${YEAR}/day$DAYNUM/input.txt"
 
 echo "add_executable(day${DAYNUM}_main day${DAYNUM}/main.cpp)" | tee -a "${TOOLDIR}/${YEAR}/CMakeLists.txt" > /dev/null
 
