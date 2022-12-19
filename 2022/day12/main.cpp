@@ -36,7 +36,7 @@ void text_to_vertices(
     unsigned int ncols = gridlines[0].size();
 
     unsigned int cnode;
-    unsigned char celem;
+    unsigned char celem, cneigh;
 
     std::vector<unsigned int> cneighbours;
     bool check_top, check_bottom, check_left, check_right;
@@ -67,22 +67,30 @@ void text_to_vertices(
 
                 if(check_left) // look left
                 {
-                    if(celem + 2 > gridlines[i][j-1]) cneighbours.push_back(cnode - 1);
+                    cneigh = gridlines[i][j-1];
+                    if(cneigh == 'E') cneigh = 'z';
+                    if(celem + 2 > cneigh) cneighbours.push_back(cnode - 1);
                 }
 
                 if(check_right) // look right
                 {
-                    if(celem + 2 > gridlines[i][j+1]) cneighbours.push_back(cnode + 1);
+                    cneigh = gridlines[i][j+1];
+                    if(cneigh == 'E') cneigh = 'z';
+                    if(celem + 2 > cneigh) cneighbours.push_back(cnode + 1);
                 }
 
                 if(check_top) // look top
                 {
-                    if(celem + 2 > gridlines[i-1][j]) cneighbours.push_back(cnode - ncols);
+                    cneigh = gridlines[i-1][j];
+                    if(cneigh == 'E') cneigh = 'z';
+                    if(celem + 2 > cneigh) cneighbours.push_back(cnode - ncols);
                 }
 
                 if(check_bottom) // look bottom
                 {
-                    if(celem + 2 > gridlines[i+1][j]) cneighbours.push_back(cnode + ncols);
+                    cneigh = gridlines[i+1][j];
+                    if(cneigh == 'E') cneigh = 'z';
+                    if(celem + 2 > cneigh) cneighbours.push_back(cnode + ncols);
                 }
             }
 
