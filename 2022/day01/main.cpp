@@ -31,12 +31,11 @@ int main_max(int argc, char** argv)
     int ix_max = 0;
     int csum = 0;
     int cix = 0;
-    std::string line = "";
-    bool updatemax;
 
+    std::string line = "";
     while(std::getline(file, line))
     {
-        updatemax = (line.empty()) || (file.peek() == EOF);
+        bool updatemax = (line.empty()) || (file.peek() == EOF);
         csum += line.empty() ? 0 : std::stoi(line);
         
         if(updatemax)
@@ -69,11 +68,10 @@ int main_top3max(int argc, char** argv)
     int csum = 0;
     int cix = 0;
     std::string line = "";
-    bool updatemax;
 
     while(std::getline(file, line))
     {
-        updatemax = (line.empty()) || (file.peek() == EOF);
+        bool updatemax = (line.empty()) || (file.peek() == EOF);
         csum += line.empty() ? 0 : std::stoi(line);
         
         if(updatemax)
@@ -131,11 +129,10 @@ int main_top3max_vector(int argc, char** argv)
 
     int csum = 0;
     std::string line = "";
-    bool updatemax;
 
     while(std::getline(file, line))
     {
-        updatemax = (line.empty()) || (file.peek() == EOF);
+        bool updatemax = (line.empty()) || (file.peek() == EOF);
         csum += line.empty() ? 0 : std::stoi(line);
         
         if(updatemax)

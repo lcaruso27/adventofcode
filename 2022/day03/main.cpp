@@ -64,14 +64,11 @@ int main_puzzle1(int argc, char** argv)
     std::ifstream file(argv[1]);
     std::string line;
     std::string::iterator last_comp1, common;
-    unsigned int nitems;
     unsigned csum = 0;
 
     while(file >> line)
     {
-        nitems = line.size() / 2;
-        
-        last_comp1 = line.begin() + nitems;
+        last_comp1 = line.begin() + line.size() / 2;
         common = intersection(line.begin(), last_comp1, last_comp1, line.end());
         
         if(common != line.end())
