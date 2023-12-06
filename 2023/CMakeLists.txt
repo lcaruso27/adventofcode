@@ -1,1 +1,6 @@
 add_executable(2023_day01_main day01/main.cpp)
+add_executable(2023_day02_main day02/main.cpp)
+# add_executable(2023_day03_main day03/main.cpp)
+add_executable(2023_day04_main day04/main.cpp)
+# add_executable(2023_day05_main day05/main.cpp)
+add_executable(2023_day06_main day06/main.cpp)
