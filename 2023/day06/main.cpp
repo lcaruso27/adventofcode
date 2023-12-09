@@ -51,22 +51,22 @@ std::vector<size_t> parse_values(const std::string& line){
 }
 
 // Naive: with loop
-size_t num_to_be_faster_naive(
-    const size_t& time,
-    const size_t& dist_record,
-    const size_t& speed_inc = 1
-){
-    size_t count_beat = 0;
-    size_t i = 0;
-    while(++i < time){
-        size_t dist = i * speed_inc * (time - i);
+// size_t num_to_be_faster_naive(
+//     const size_t& time,
+//     const size_t& dist_record,
+//     const size_t& speed_inc = 1
+// ){
+//     size_t count_beat = 0;
+//     size_t i = 0;
+//     while(++i < time){
+//         size_t dist = i * speed_inc * (time - i);
 
-        if(dist > dist_record)
-            count_beat++;
-    }
+//         if(dist > dist_record)
+//             count_beat++;
+//     }
 
-    return count_beat;
-}
+//     return count_beat;
+// }
 
 // Analytical
 // y > d
