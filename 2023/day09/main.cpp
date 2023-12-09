@@ -7,6 +7,7 @@
 #include <numeric>
 #include <algorithm>
 #include <iterator>
+#include <exception>
 
 std::string HEADER_DELIM = "--------";
 
@@ -57,6 +58,9 @@ T extrapolate_future_value(
     Iterator last,
     const T& target_value
 ){
+    if(first == last)
+        throw std::runtime_error("No element to check.");
+
     if(std::all_of(first, last, [&target_value](const T& val){return val == target_value;}))
         return *std::prev(last);
 
