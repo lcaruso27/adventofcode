@@ -6,6 +6,7 @@
 #include <cctype>
 #include <map>
 #include <iterator>
+#include <vector>
 
 std::string HEADER_DELIM = "--------";
 

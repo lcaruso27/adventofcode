@@ -3,7 +3,7 @@
 #include <string>
 #include <exception>
 #include <vector>
-#include <climits>
+#include <limits>
 #include <deque>
 #include <iterator>
 #include <algorithm>
@@ -110,11 +110,11 @@ int steps_shortest_path_search(
 {
     unsigned int nvertices = vertices.size();
 
-    std::vector<int> dists(nvertices, INT16_MAX);
+    std::vector<int> dists(nvertices, std::numeric_limits<int>::max());
     std::vector<bool> explored(nvertices, false);
     std::deque<unsigned int> path = {start};
 
-    std::vector<int> parents(nvertices, INT16_MAX); // showing path for debugging
+    std::vector<int> parents(nvertices, std::numeric_limits<int>::max()); // showing path for debugging
     parents[start] = start;
     explored[start] = true;
     dists[start] = 0;
@@ -187,7 +187,7 @@ int main_puzzle2(int argc, char** argv)
     std::vector<unsigned int> startnodes;
     unsigned char startelem = 'a';
     int csteps;
-    int minsteps = INT16_MAX;
+    int minsteps = std::numeric_limits<int>::max();
 
     text_to_vertices(lines, startelem, all_vertices, startnodes, target_node);
 

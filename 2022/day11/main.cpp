@@ -6,6 +6,7 @@
 #include <deque>
 #include <algorithm>
 #include <cmath>
+#include <functional>
 
 std::string HEADER_DELIM = "--------";
 
