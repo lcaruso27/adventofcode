@@ -26,7 +26,7 @@ DAYNUM=$(printf "%02d" $2)
 DDAY=$(printf "%d" $2)
 DESC=$3
 TOOLDIR=${0%/*}
-COOKIE="${TOOLDIR}/${YEAR}/.cookie"
+COOKIE="${TOOLDIR}/.cookie"
 
 sed "s,#YYYY,$YEAR,;s,#XX,$DAYNUM,;s,#Subject,${DESC}," "${TOOLDIR}/main.cpp.in" > "${TOOLDIR}/${YEAR}/day$DAYNUM/main.cpp"
 

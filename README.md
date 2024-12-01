@@ -27,7 +27,7 @@ Run day XX
 
 ## Add new day
 
-1. Get cookie session from [advent of code] (need registration) & copy-paste it to `<yyyy>/.cookie` file
+1. Get cookie session from [advent of code] (need registration) & copy-paste it to `.cookie` file
 
 2. Run (as expected) `add_new_day.sh` bash script:
 ```
