@@ -1,38 +1,72 @@
 #!/usr/bin/env bash
 
 # author: caruso.lorenzo@ymail.com
-# date: 12/04/2022
 # Add code for new AOC day
 
 help()
 {
     echo "Add new day executable for AOC."
-    echo "Usage: add_new_day.sh <year> <day_number> <description>"
+    echo "Usage: add_new_day.sh -y <year> -d <day_number> -s <summary>"
     echo ""
-    echo "year                  INPUT: AOC year to add."
-    echo "day_number            INPUT: Number of the day to add."
-    echo "description           INPUT: Short description of day task."
+    echo "-y                    OPTION: AOC year to add. Default is current year."
+    echo "-d                    OPTION: Number of the day to add. Default is current day."
+    echo "-s                    OPTION: Short summary of day task. Default is title from corresponding 'year' and 'day' puzzle."
     echo ""
 
     exit 1
 }
 
-if [[ "$#" != 3 ]]; then
+YEAR=$(date +%Y)
+DAYNUM=$(date +%d)
+DDAY=$(printf "%d" $DAYNUM)
+SUMMARY=""
+
+while getopts "y:d:s:" option; do
+    case ${option} in
+        y)
+            YEAR="${OPTARG}"
+            ;;
+        d)
+            DAYNUM="$(printf "%02d" ${OPTARG})"
+            DDAY="$(printf "%d" ${OPTARG})"
+            ;;
+        s)
+            SUMMARY="${OPTARG}"
+            ;;
+        *)
+            echo "invalid option: ${OPTARG}"
+            help
+            exit 1
+            ;;
+    esac
+done
+
+shift $((OPTIND - 1))
+
+if [[ "$#" != 0 ]]; then
     help
 fi
 
-YEAR=$1
-DAYNUM=$(printf "%02d" $2)
-DDAY=$(printf "%d" $2)
-DESC=$3
+AOCWEBSITE="https://adventofcode.com"
+
+if [ -z "$SUMMARY" ]; then
+    SUMMARY=$(curl -s "${AOCWEBSITE}/${YEAR}/day/${DDAY}" | sed -n '/<h2>/p' | sed -E 's,.*Day.*: (.*) ---.*,\1,')
+fi
+
 TOOLDIR=${0%/*}
 COOKIE="${TOOLDIR}/.cookie"
 
-sed "s,#YYYY,$YEAR,;s,#XX,$DAYNUM,;s,#Subject,${DESC}," "${TOOLDIR}/main.cpp.in" > "${TOOLDIR}/${YEAR}/day$DAYNUM/main.cpp"
+mkdir -p "${TOOLDIR}/${YEAR}/day$DAYNUM"
 
-echo -n "" > "${TOOLDIR}/${YEAR}/day$DAYNUM/example.txt" 
-curl -b session=$(cat $COOKIE) "https://adventofcode.com/${YEAR}/day/${DDAY}/input" > "${TOOLDIR}/${YEAR}/day$DAYNUM/input.txt"
+if [ ! -f "${TOOLDIR}/${YEAR}/day$DAYNUM/main.cpp" ]; then
+    sed "s,#YYYY,$YEAR,;s,#XX,$DAYNUM,;s,#Subject,${SUMMARY}," "${TOOLDIR}/main.cpp.in" > "${TOOLDIR}/${YEAR}/day$DAYNUM/main.cpp"
+    echo -n "" > "${TOOLDIR}/${YEAR}/day$DAYNUM/example.txt"
+    curl -b session=$(cat $COOKIE) "${AOCWEBSITE}/${YEAR}/day/${DDAY}/input" > "${TOOLDIR}/${YEAR}/day$DAYNUM/input.txt"
+fi
 
-echo "add_executable(${YEAR}_day${DAYNUM}_main day${DAYNUM}/main.cpp)" | tee -a "${TOOLDIR}/${YEAR}/CMakeLists.txt" > /dev/null
+cmakeline="add_executable(${YEAR}_day${DAYNUM}_main day${DAYNUM}/main.cpp)"
+if ! grep -Fxq "${cmakeline}" "${TOOLDIR}/${YEAR}/CMakeLists.txt"; then
+    echo "${cmakeline}" | tee -a "${TOOLDIR}/${YEAR}/CMakeLists.txt" > /dev/null
+fi
 
 exit 0

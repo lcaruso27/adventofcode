@@ -29,9 +29,15 @@ Run day XX
 
 1. Get cookie session from [advent of code] (need registration) & copy-paste it to `.cookie` file
 
-2. Run (as expected) `add_new_day.sh` bash script:
+2. Run `add_new_day.sh` bash script:
 ```
-./add_new_day.sh <yyyy> <dd> <description>
+# Add current day
+./add_new_day.sh
+
+# Add custom day
+./add_new_day.sh -y <yyyy> -d <dd> -s <summary>
 ```
+
+If the targeted day already exists, the script does nothing.
 
 [advent of code]: <https://adventofcode.com/> "advent of code"
