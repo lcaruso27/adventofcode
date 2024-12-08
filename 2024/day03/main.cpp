@@ -47,7 +47,7 @@ bool is_number(const std::string& i_word)
 long sum_multiplied_values(const std::string& i_instructions)
 {
     long sum_values = 0;
-    size_t prev_start = 0, mul_start = 0, mul_end = 0;
+    size_t mul_start = 0, mul_end = 0;
     while (mul_start != std::string::npos && mul_end != std::string::npos){
         mul_start = i_instructions.find("mul(", mul_end);
         if (mul_start == std::string::npos)

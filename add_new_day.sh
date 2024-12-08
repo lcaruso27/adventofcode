@@ -18,7 +18,7 @@ help()
 
 YEAR=$(date +%Y)
 DAYNUM=$(date +%d)
-DDAY=$(printf "%d" $DAYNUM)
+DDAY=$(printf "%d" "$DAYNUM")
 SUMMARY=""
 
 while getopts "y:d:s:" option; do

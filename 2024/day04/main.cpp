@@ -131,7 +131,7 @@ bool is_x_mas_shape(
 }
 
 /// Count X-MAS pattern in grid
-long count_x_mas_pattern(std::vector<std::string>& i_grid)
+long count_x_mas_pattern(const std::vector<std::string>& i_grid)
 {
     long n_x_mas_pattern = 0;
     if (i_grid.empty())
