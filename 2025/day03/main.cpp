@@ -75,7 +75,7 @@ int main_puzzle1(int argc, char** argv)
         batteries.begin(),
         batteries.end(),
         size_t{0},
-        [&](size_t acc, const auto& battery){ return acc + joltage_n_digits(battery, 2); }
+        [](size_t acc, const auto& battery){ return acc + joltage_n_digits(battery, 2); }
     );
     std::cout << "Total output joltage: " << sum << std::endl;
     return 0;
@@ -89,7 +89,7 @@ int main_puzzle2(int argc, char** argv)
         batteries.begin(),
         batteries.end(),
         size_t{0},
-        [&](size_t acc, const auto& battery){ return acc + joltage_n_digits(battery, 12); }
+        [](size_t acc, const auto& battery){ return acc + joltage_n_digits(battery, 12); }
     );
     std::cout << "Total output joltage: " << sum << std::endl;
     return 0;
